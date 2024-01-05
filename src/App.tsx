@@ -10,6 +10,5 @@ function App() {
 }
 
 //css düzenlemesi
-//toolbar
 //bildirimler
 export default App;

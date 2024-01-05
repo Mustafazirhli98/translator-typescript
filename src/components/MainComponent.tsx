@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import { languages } from "../utils/Languages"
 import { get } from "../service/get";
-import ToolsLeft from "./ToolsLeft";
-import ToolsRight from "./ToolsRight";
 import { faRightLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Tools from "./Tools";
 
 const MainComponent = () => {
     const [fromText, setFromText] = useState<string>("");
@@ -13,7 +12,8 @@ const MainComponent = () => {
     const [selectedToLanguage, setSelectedToLanguage] = useState<string>("en-GB");
     const [displayLeft, setDisplayLeft] = useState<string>("display")
     const [displayRight, setDisplayRight] = useState<string>("display")
-    const [audioAnimation, setAudioAnimation] = useState<boolean>(false)
+    const [audioAnimationLeft, setAudioAnimationLeft] = useState<boolean>(false)
+    const [audioAnimationRight, setAudioAnimationRight] = useState<boolean>(false)
 
     const controlFromText = () => {
         if (fromText === "") {
@@ -26,6 +26,22 @@ const MainComponent = () => {
             setDisplayRight("display")
         } else setDisplayRight("")
     }
+
+    const exchange = () => {
+        // Text exchange
+        if (toText !== "") {
+            const prevFromText = fromText;
+            setFromText(toText);
+            setToText(prevFromText);
+        } else {
+            console.log("exchange için kelime yok");
+        }
+
+        // Lang exchange
+        const prevSelectedFromLang = selectedFromLanguage;
+        setSelectedFromLanguage(selectedToLanguage);
+        setSelectedToLanguage(prevSelectedFromLang);
+    };
 
 
     useEffect(() => {
@@ -43,7 +59,7 @@ const MainComponent = () => {
                         </option>
                     ))}
                 </select>
-                <FontAwesomeIcon className="exchange" icon={faRightLeft} />
+                <FontAwesomeIcon className="exchange" icon={faRightLeft} onClick={() => exchange()} />
                 <select value={selectedToLanguage} onChange={(e) => setSelectedToLanguage(e.target.value)}>
                     {Object.entries(languages).map(([code, languageName]) => (
                         <option key={code} value={code}>
@@ -58,6 +74,7 @@ const MainComponent = () => {
             }}>
                 <div className="input-group">
                     <textarea
+                        value={fromText}
                         id="fromText"
                         onChange={(e) => setFromText(e.target.value)}
                         onKeyDown={(e) => {
@@ -68,19 +85,21 @@ const MainComponent = () => {
                     >
                     </textarea>
                     <textarea id="toText" readOnly value={toText}></textarea>
-                    <ToolsLeft
+                    <Tools
                         display={displayLeft}
-                        fromText={fromText}
-                        selectedFromLanguage={selectedFromLanguage}
-                        audioAnimation={audioAnimation}
-                        setAudioAnimation={setAudioAnimation}
+                        text={fromText}
+                        selectedLanguage={selectedFromLanguage}
+                        audioAnimation={audioAnimationLeft}
+                        setAudioAnimation={setAudioAnimationLeft}
+                        side={"from"}
                     />
-                    <ToolsRight
+                    <Tools
                         display={displayRight}
-                        toText={toText}
-                        selectedToLanguage={selectedToLanguage}
-                        audioAnimation={audioAnimation}
-                        setAudioAnimation={setAudioAnimation}
+                        text={toText}
+                        selectedLanguage={selectedToLanguage}
+                        audioAnimation={audioAnimationRight}
+                        setAudioAnimation={setAudioAnimationRight}
+                        side={"to"}
                     />
                 </div>
                 <button
