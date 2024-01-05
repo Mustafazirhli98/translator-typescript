@@ -46,6 +46,19 @@ select {
   cursor: pointer;
   border-radius: 10px;
   padding: 5px;
+  outline: none;
+}
+
+.exchange {
+  cursor: pointer;
+}
+
+.exchange:hover {
+  font-size: 18px;
+}
+
+.input-group {
+  position: relative;
 }
 
 .input-group textarea {
@@ -53,6 +66,7 @@ select {
   width: 350px;
   padding: 8px;
   outline: none;
+  font-size: 17px;
 }
 
 #fromText {
@@ -73,5 +87,52 @@ select {
 }
 
 .btn-translate:hover {
+  background-color: var(--primary4-color);
+}
+
+.speaker-from {
+  position: absolute;
+  top: 88%;
+  right: 97%;
+  cursor: pointer;
+  width: 20px;
+}
+
+.speaker-to {
+  position: absolute;
+  top: 89%;
+  right: 47%;
+  cursor: pointer;
+  width: 20px;
+}
+
+.copy-from {
+  position: absolute;
+  top: 88%;
+  right: 94%;
+  cursor: pointer;
+}
+
+.copy-to {
+  position: absolute;
+  top: 89%;
+  right: 44%;
+  cursor: pointer;
+}
+
+.display {
+  display: none
+}
+
+select::-webkit-scrollbar {
+  width: 8px;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: var(--primary1-color);
+  border-radius: 10px;
+}
+
+select::-webkit-scrollbar-track {
   background-color: var(--primary4-color);
 }

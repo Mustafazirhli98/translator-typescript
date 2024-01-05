@@ -9,7 +9,6 @@ function App() {
   );
 }
 
-
 //css düzenlemesi
 //toolbar
 //bildirimler
