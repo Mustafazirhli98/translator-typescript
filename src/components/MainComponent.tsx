@@ -11,13 +11,12 @@ const MainComponent = () => {
     useEffect(() => {
         controlFromText({ fromText, setDisplayLeft, setToText })
         controlToText({ toText, setDisplayRight })
-    }, [fromText, toText])
-
+    },)
+    
     return (
         <div className='box'>
             <ToolBar />
             <Form />
-
         </div >
     )
 }

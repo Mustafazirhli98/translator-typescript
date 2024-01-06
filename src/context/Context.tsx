@@ -1,7 +1,6 @@
 import { createContext, useState } from 'react'
 import { ContextTypes } from './types'
 
-
 const defaultState = {
     fromText: "",
     setFromText: () => { },
@@ -20,8 +19,12 @@ const defaultState = {
     audioAnimationRight: false,
     setAudioAnimationRight: () => { },
     loading: false,
-    setLoading: () => { }
+    setLoading: () => { },
+    toast: { state: false, text: "" },
+    setToast: () => { }
+
 }
+
 
 interface ContextProvideProps {
     children: React.ReactNode
@@ -34,11 +37,12 @@ const ContextProvider = ({ children }: ContextProvideProps) => {
     const [toText, setToText] = useState<string>("")
     const [selectedFromLanguage, setSelectedFromLanguage] = useState<string>("tr-TR");
     const [selectedToLanguage, setSelectedToLanguage] = useState<string>("en-GB");
-    const [displayLeft, setDisplayLeft] = useState<string>("display")
-    const [displayRight, setDisplayRight] = useState<string>("display")
-    const [audioAnimationLeft, setAudioAnimationLeft] = useState<boolean>(false)
-    const [audioAnimationRight, setAudioAnimationRight] = useState<boolean>(false)
-    const [loading, setLoading] = useState<boolean>(false)
+    const [displayLeft, setDisplayLeft] = useState<string>("display");
+    const [displayRight, setDisplayRight] = useState<string>("display");
+    const [audioAnimationLeft, setAudioAnimationLeft] = useState<boolean>(false);
+    const [audioAnimationRight, setAudioAnimationRight] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [toast, setToast] = useState({ state: false, text: "" })
     //#endregion
     return (
         <TranslationContext.Provider
@@ -48,7 +52,8 @@ const ContextProvider = ({ children }: ContextProvideProps) => {
                 selectedToLanguage, setSelectedToLanguage,
                 displayLeft, setDisplayLeft, displayRight, setDisplayRight,
                 audioAnimationLeft, setAudioAnimationLeft, audioAnimationRight,
-                setAudioAnimationRight, loading, setLoading
+                setAudioAnimationRight, loading, setLoading,
+                toast, setToast
             }}>
             {children}
         </TranslationContext.Provider>

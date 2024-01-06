@@ -26,7 +26,6 @@ interface ControlFromText {
     setToText: (param: string) => void,
     setDisplayLeft: (param: string) => void
 }
-
 export const controlFromText = ({ fromText, setToText, setDisplayLeft }: ControlFromText): void => {
     if (fromText === "") {
         setDisplayLeft("display");
@@ -38,9 +37,19 @@ interface ControlToText {
     toText: string,
     setDisplayRight: (param: string) => void
 }
-
 export const controlToText = ({ toText, setDisplayRight }: ControlToText) => {
     if (toText === "") {
         setDisplayRight("display")
     } else setDisplayRight("")
 }
+
+interface Toast {
+    setToast: React.Dispatch<React.SetStateAction<{ state: boolean; text: string }>>;
+    toastValue: string;
+}
+export const showToast = ({ setToast, toastValue }: Toast) => {
+    setToast({ state: true, text: toastValue });
+    setTimeout(() => {
+        setToast({ state: false, text: "" });
+    }, 3000)
+};

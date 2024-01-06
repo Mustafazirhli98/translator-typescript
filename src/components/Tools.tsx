@@ -28,7 +28,6 @@ const Tools = ({ display, text, selectedLanguage, audioAnimation, setAudioAnimat
                     onClick={(e) => speak({ text, selectedLanguage, setAudioAnimation })}
                 />
         }
-
         <FontAwesomeIcon className={`copy copy-${side} ${display}`} icon={faCopy} onClick={() => copy(text)} />
     </>
 

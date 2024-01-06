@@ -1,3 +1,8 @@
+type ToastState = {
+    state: boolean,
+    text: string
+}
+
 export interface ContextTypes {
     fromText: string,
     setFromText: (param: string) => void,
@@ -16,5 +21,7 @@ export interface ContextTypes {
     audioAnimationRight: boolean,
     setAudioAnimationRight: (param: boolean) => void
     loading: boolean,
-    setLoading: (param: boolean) => void
+    setLoading: (param: boolean) => void,
+    toast: ToastState,
+    setToast: React.Dispatch<React.SetStateAction<ToastState>>;
 }

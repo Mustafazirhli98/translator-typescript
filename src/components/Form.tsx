@@ -3,13 +3,25 @@ import { TranslationContext } from '../context/Context'
 
 import Tools from './Tools'
 import { get } from '../service/get'
+import { showToast } from '../utils/Utils'
 
 const Form = () => {
-    const { fromText, setFromText, toText, setToText, selectedFromLanguage, selectedToLanguage, loading, setLoading, displayLeft, displayRight, audioAnimationLeft, setAudioAnimationLeft, audioAnimationRight, setAudioAnimationRight } = useContext(TranslationContext)
+    const { fromText, setFromText, toText, setToText,
+        selectedFromLanguage, selectedToLanguage, loading,
+        setLoading, displayLeft, displayRight, audioAnimationLeft,
+        setAudioAnimationLeft, audioAnimationRight,
+        setAudioAnimationRight, setToast } = useContext(TranslationContext)
+
+    console.log(fromText)
+
     return (
         <form onSubmit={(e) => {
             e.preventDefault()
-            get(fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading)
+            if (fromText === "") {
+                showToast({ setToast, toastValue: "Enter a word before translate." });
+                return;
+            }
+            get({ fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading })
         }}>
             <div className="input-group">
                 <textarea
@@ -18,7 +30,11 @@ const Form = () => {
                     onChange={(e) => setFromText(e.target.value)}
                     onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                            get(fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading)
+                            if (fromText === "") {
+                                showToast({ setToast, toastValue: "Enter a word before translate." });
+                                return;
+                            }
+                            get({ fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading })
                         }
                     }}
                 >
