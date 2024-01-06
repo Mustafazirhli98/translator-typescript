@@ -9,8 +9,7 @@ const Form = () => {
     const { fromText, setFromText, toText, setToText,
         selectedFromLanguage, selectedToLanguage, loading,
         setLoading, displayLeft, displayRight, audioAnimationLeft,
-        setAudioAnimationLeft, audioAnimationRight,
-        setAudioAnimationRight, setToast } = useContext(TranslationContext)
+        setAudioAnimationLeft, audioAnimationRight, setAudioAnimationRight, setToast } = useContext(TranslationContext)
     return (
         <form onSubmit={(e) => {
             e.preventDefault()
@@ -24,7 +23,9 @@ const Form = () => {
                 <textarea
                     value={fromText}
                     id="fromText"
-                    onChange={(e) => setFromText(e.target.value)}
+                    onChange={(e) => {
+                        setFromText(e.target.value)
+                    }}
                     onKeyDown={(e) => {
                         if (e.key === "Enter") {
                             if (fromText === "") {
