@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { languages } from '../utils/Languages'
 import { TranslationContext } from '../context/Context'
 import { useContext } from 'react'
-import { faRightLeft } from '@fortawesome/free-solid-svg-icons'
 import { get } from '../service/get'
+import { Exchange } from '../assets/svg/SVGs'
+
 
 
 const ToolBar = () => {
@@ -38,10 +38,10 @@ const ToolBar = () => {
                     </option>
                 ))}
             </select>
-            <FontAwesomeIcon
+            <Exchange
                 className="exchange"
-                icon={faRightLeft}
-                onClick={() => exchange()} />
+                onClick={() => exchange()}
+            />
             <select
                 value={selectedToLanguage}
                 onChange={(e) => {

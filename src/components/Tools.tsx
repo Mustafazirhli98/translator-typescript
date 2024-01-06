@@ -1,5 +1,4 @@
-import { faCopy, faVolumeHigh, faVolumeLow } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Copy, SpeakerHigh, SpeakerLow } from "../assets/svg/SVGs";
 import { copy, speak } from "../utils/Utils"
 
 interface IProps {
@@ -15,20 +14,22 @@ const Tools = ({ display, text, selectedLanguage, audioAnimation, setAudioAnimat
     <>
         {
             audioAnimation === false ?
-                <FontAwesomeIcon
+                <SpeakerLow
                     className={`speaker speaker-${side} ${display}`}
                     id={side}
-                    icon={faVolumeLow}
                     onClick={(e) => speak({ text, selectedLanguage, setAudioAnimation })}
-                /> :
-                <FontAwesomeIcon
+                />
+                :
+                <SpeakerHigh
                     className={`speaker speaker-${side} ${display}`}
                     id={side}
-                    icon={faVolumeHigh}
                     onClick={(e) => speak({ text, selectedLanguage, setAudioAnimation })}
                 />
         }
-        <FontAwesomeIcon className={`copy copy-${side} ${display}`} icon={faCopy} onClick={() => copy(text)} />
+        <Copy
+            className={`copy copy-${side} ${display}`}
+            onClick={() => copy(text)}
+        />
     </>
 
 )
