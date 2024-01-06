@@ -20,7 +20,7 @@ const defaultState = {
     setAudioAnimationRight: () => { },
     loading: false,
     setLoading: () => { },
-    toast: { state: false, text: "" },
+    toast: { state: "", text: "" },
     setToast: () => { }
 
 }
@@ -42,7 +42,7 @@ const ContextProvider = ({ children }: ContextProvideProps) => {
     const [audioAnimationLeft, setAudioAnimationLeft] = useState<boolean>(false);
     const [audioAnimationRight, setAudioAnimationRight] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
-    const [toast, setToast] = useState({ state: false, text: "" })
+    const [toast, setToast] = useState({ state: "", text: "" })
     //#endregion
     return (
         <TranslationContext.Provider

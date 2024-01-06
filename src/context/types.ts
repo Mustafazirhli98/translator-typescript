@@ -1,5 +1,5 @@
 type ToastState = {
-    state: boolean,
+    state: string,
     text: string
 }
 

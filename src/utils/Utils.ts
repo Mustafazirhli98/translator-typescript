@@ -44,12 +44,12 @@ export const controlToText = ({ toText, setDisplayRight }: ControlToText) => {
 }
 
 interface Toast {
-    setToast: React.Dispatch<React.SetStateAction<{ state: boolean; text: string }>>;
+    setToast: React.Dispatch<React.SetStateAction<{ state: string; text: string }>>;
     toastValue: string;
 }
 export const showToast = ({ setToast, toastValue }: Toast) => {
-    setToast({ state: true, text: toastValue });
+    setToast({ state: "active", text: toastValue });
     setTimeout(() => {
-        setToast({ state: false, text: "" });
-    }, 3000)
+        setToast({ state: "", text: "" });
+    }, 2000)
 };
