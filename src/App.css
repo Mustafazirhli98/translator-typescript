@@ -151,6 +151,8 @@ select::-webkit-scrollbar-track {
   background-color: var(--primary4-color);
 }
 
+
+
 /* Mobil boyut */
 
 @media(width<600px) {

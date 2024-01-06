@@ -45,6 +45,7 @@ const ToolBar = () => {
             <select
                 value={selectedToLanguage}
                 onChange={(e) => {
+                    setSelectedToLanguage(e.target.value)
                     get({ fromText, selectedFromLanguage, selectedToLanguage: e.target.value, setToText, setLoading, setToast })
                 }}>
                 {Object.entries(languages).map(([code, languageName]) => (
