@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --primary1-color: #73b3bc;
+  --primary1-color: #3498db;
   --primary2-color: #AAD7D9;
   --primary3-color: #FBF9F1;
   --primary4-color: rgb(245, 234, 214);
@@ -84,6 +84,11 @@ select {
 
 #toText {
   border-radius: 0 10px 10px 0;
+}
+
+#toText.loading {
+  color: gray;
+  cursor: not-allowed;
 }
 
 .btn-translate {
@@ -182,7 +187,7 @@ select::-webkit-scrollbar-track {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background:var(--primary1-color)
+    background: var(--primary1-color)
   }
 
 }

@@ -11,9 +11,6 @@ const Form = () => {
         setLoading, displayLeft, displayRight, audioAnimationLeft,
         setAudioAnimationLeft, audioAnimationRight,
         setAudioAnimationRight, setToast } = useContext(TranslationContext)
-
-    console.log(fromText)
-
     return (
         <form onSubmit={(e) => {
             e.preventDefault()
@@ -21,7 +18,7 @@ const Form = () => {
                 showToast({ setToast, toastValue: "Enter a word before translate." });
                 return;
             }
-            get({ fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading })
+            get({ fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading, setToast })
         }}>
             <div className="input-group">
                 <textarea
@@ -34,12 +31,12 @@ const Form = () => {
                                 showToast({ setToast, toastValue: "Enter a word before translate." });
                                 return;
                             }
-                            get({ fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading })
+                            get({ fromText, selectedFromLanguage, selectedToLanguage, setToText, setLoading, setToast })
                         }
                     }}
                 >
                 </textarea>
-                <textarea id="toText" readOnly value={loading ? "Loading..." : toText}></textarea>
+                <textarea id="toText" className={loading ? "loading" : ""} readOnly value={loading ? "Loading..." : toText}></textarea>
                 <Tools
                     display={displayLeft}
                     text={fromText}
