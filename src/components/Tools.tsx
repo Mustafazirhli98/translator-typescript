@@ -19,13 +19,13 @@ const Tools = ({ display, text, selectedLanguage, audioAnimation, setAudioAnimat
                     className={`speaker speaker-${side} ${display}`}
                     id={side}
                     icon={faVolumeLow}
-                    onClick={(e) => speak(text, selectedLanguage, e.currentTarget.id, setAudioAnimation)} // e.target yerine e.currentTarget kullanıldı
+                    onClick={(e) => speak({ text, selectedLanguage, setAudioAnimation })}
                 /> :
                 <FontAwesomeIcon
                     className={`speaker speaker-${side} ${display}`}
                     id={side}
                     icon={faVolumeHigh}
-                    onClick={(e) => speak(text, selectedLanguage, e.currentTarget.id, setAudioAnimation)} // e.target yerine e.currentTarget kullanıldı
+                    onClick={(e) => speak({ text, selectedLanguage, setAudioAnimation })}
                 />
         }
 

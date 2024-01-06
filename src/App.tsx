@@ -8,7 +8,6 @@ function App() {
     </div>
   );
 }
-
-//css düzenlemesi
-//bildirimler
+//bildirimler.
+//css düzenlemesi.
 export default App;

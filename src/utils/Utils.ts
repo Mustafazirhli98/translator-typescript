@@ -2,12 +2,15 @@ export const copy = (text: string) => {
     navigator.clipboard.writeText(text)
 }
 
-export const speak = (text: string, lang: string, id: string, setAudioAnimation: (param1: boolean) => void) => {
-    let utterance;
-
-    utterance = new SpeechSynthesisUtterance();
+interface Speak {
+    text: string,
+    selectedLanguage: string,
+    setAudioAnimation: (param: boolean) => void
+}
+export const speak = ({ text, selectedLanguage, setAudioAnimation }: Speak) => {
+    let utterance = new SpeechSynthesisUtterance();
     utterance.text = text;
-    utterance.lang = lang;
+    utterance.lang = selectedLanguage;
     speechSynthesis.speak(utterance);
 
     utterance.onstart = () => {
@@ -18,3 +21,26 @@ export const speak = (text: string, lang: string, id: string, setAudioAnimation:
     }
 }
 
+interface ControlFromText {
+    fromText: string,
+    setToText: (param: string) => void,
+    setDisplayLeft: (param: string) => void
+}
+
+export const controlFromText = ({ fromText, setToText, setDisplayLeft }: ControlFromText): void => {
+    if (fromText === "") {
+        setDisplayLeft("display");
+        setToText("")
+    } else setDisplayLeft("")
+}
+
+interface ControlToText {
+    toText: string,
+    setDisplayRight: (param: string) => void
+}
+
+export const controlToText = ({ toText, setDisplayRight }: ControlToText) => {
+    if (toText === "") {
+        setDisplayRight("display")
+    } else setDisplayRight("")
+}
